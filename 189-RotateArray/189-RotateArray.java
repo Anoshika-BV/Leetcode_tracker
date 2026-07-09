@@ -1,0 +1,34 @@
+// Last updated: 7/9/2026, 9:16:07 AM
+class Solution {
+
+    public void rotate(int[] nums, int k) {
+        //test
+        int n = nums.length;
+        // Handle large k
+        k = k % n;
+
+        // Reverse whole array
+        reverse(nums, 0, n - 1);
+
+        // Reverse first k elements
+        reverse(nums, 0, k - 1);
+
+        // Reverse remaining elements
+        reverse(nums, k, n - 1);
+    }
+
+    private void reverse(int[] nums,
+                         int left,
+                         int right) {
+
+        while (left < right) {
+
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+
+            left++;
+            right--;
+        }
+    }
+}
